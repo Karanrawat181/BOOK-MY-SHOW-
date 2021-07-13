@@ -1,12 +1,8 @@
 import React from 'react';
-
 import { Route } from 'react-router-dom';
-
 import DefaultLayout from '../layouts/Default.layout';
 
 const DefaultHOC = ({ component: Component, ...rest }) => {
-
-
 
     return (<div>
 
@@ -27,3 +23,4 @@ const DefaultHOC = ({ component: Component, ...rest }) => {
 
 
 export default DefaultHOC;
+

@@ -1,19 +1,22 @@
 import React from 'react';
 
-import { Route } from "react-router-dom";
 
 import DefaultHOC from './HOC/Default.HOC';
 
 import Temp from './components/Temp';
+import Lame from './components/lame';
 
 
 function App() {
 
     return (
 
-         <div>
+        <div>
+
         <DefaultHOC path="/"  exact component={Temp}    />
-           </div>
+         <DefaultHOC path="/movie" exact component={Lame} />
+       
+        </div>
     );
 };
 
