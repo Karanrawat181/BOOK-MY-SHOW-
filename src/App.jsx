@@ -1,22 +1,20 @@
 import React from 'react';
-
-
 import DefaultHOC from './HOC/Default.HOC';
-
-import Temp from './components/Temp';
-import Lame from './components/lame';
-
+import HomePage from './pages/Home';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
 
     return (
 
-        <div>
+        <>
 
-        <DefaultHOC path="/"  exact component={Temp}    />
-         <DefaultHOC path="/movie" exact component={Lame} />
-       
-        </div>
+            <DefaultHOC path="/" exact component={ HomePage } />
+            
+          
+
+        </>
     );
 };
 

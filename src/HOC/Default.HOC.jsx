@@ -4,7 +4,8 @@ import DefaultLayout from '../layouts/Default.layout';
 
 const DefaultHOC = ({ component: Component, ...rest }) => {
 
-    return (<div>
+    return (
+    <>
 
         <Route {...rest} 
         
@@ -16,7 +17,7 @@ const DefaultHOC = ({ component: Component, ...rest }) => {
 
         </DefaultLayout>} />
 
-    </div>
+    </>
     );
 
 };
