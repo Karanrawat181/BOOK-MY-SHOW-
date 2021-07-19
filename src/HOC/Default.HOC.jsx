@@ -7,17 +7,22 @@ const DefaultHOC = ({ component: Component, ...rest }) => {
     return (
     <>
 
-        <Route {...rest} 
+        <Route 
+          {...rest} 
         
-        component={(props) => <DefaultLayout>
-
-            <Component {...props} 
+        component={(props) => (
             
-            />
+             <DefaultLayout>
 
-        </DefaultLayout>} />
+            <Component {...props} />
+
+        </DefaultLayout>
+
+        )}
+         />
 
     </>
+
     );
 
 };

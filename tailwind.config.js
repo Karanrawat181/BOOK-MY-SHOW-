@@ -1,13 +1,13 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
-  theme: {
-   
+  theme:{ 
+
     extend: {
 
       colors: {
         pavan: {
-          50: "#ffe8e8",
+          50 : "#ffe8e8",
           100: "#f3c1c3",
           200: "#e5999c",
           300: "#da7175",
@@ -27,14 +27,18 @@ module.exports = {
           500: "#636582",
           600: "#4c4f66",
           700: "#363849",
-          800: "#21222e",
+          800: "#2b3147",
           900: "#0a0a16",
         },
       },
+     
     },
   },
+
   variants: {
     extend: {},
   },
   plugins: [],
 }
+
+

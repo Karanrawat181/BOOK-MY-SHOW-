@@ -8,10 +8,8 @@ const DefaultLayout = (props) => {
   return (
     <>
       <Navbar />
-
       <HeroCarousal />
-      
-         {props.children}
+      {props.children}
 
     </>
   );
