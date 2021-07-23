@@ -7,7 +7,7 @@ export const MovieContext = React.createContext();
 //provider
 const MovieProvider = ({ children }) => {
     
-    const [movie,setMovie] =useState({
+    const [movie,setMovie] = useState({
   
      id: 0,
      original_title:"",
@@ -20,7 +20,7 @@ const MovieProvider = ({ children }) => {
 
     return(
 
-         <MovieContext.Provider  value={{movie,setMovie}}>
+         <MovieContext.Provider  value={{movie,setMovie}} >
 
          {children}
 
