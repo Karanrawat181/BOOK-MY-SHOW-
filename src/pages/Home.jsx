@@ -1,13 +1,71 @@
-import React from "react";
+import axios from "axios";
+import React, { useState,useEffect } from "react";
+
 
 // Components
 import EntertainmentCardSlider from "../components/Entertainment/Entertainmentcard.component";
 import PosterSlider from "../components/PosterSlider/PosterSlider.component";
 
 // config
-import TempPosters from "../config/TempPosters.config";
+
+
+
 
 const HomePage = () => {
+
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [TopRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+
+  useEffect(() => {
+
+    const requestGetPopularMovies = async () => {
+
+      const getPopularMovies = await axios.get("/movie/popular");
+
+      setPopularMovies(getPopularMovies.data.results);
+
+
+    };
+
+    requestGetPopularMovies();
+
+  }, []);
+
+
+  useEffect(() => {
+
+    const requestGetTopRatedMovies = async () => {
+
+      const getTopRatedMovies = await axios.get("/movie/top_rated");
+
+      setTopRatedMovies(getTopRatedMovies.data.results);
+
+
+    };
+
+    requestGetTopRatedMovies();
+
+  }, []);
+  
+  useEffect(() => {
+
+    const requestGetPopularMovies = async () => {
+
+      const getUpcomingMovies = await axios.get("/movie/upcoming");
+
+      setUpcomingMovies(getUpcomingMovies.data.results);
+
+
+    };
+
+    requestGetPopularMovies();
+
+  }, []);
+
+
+
   return (
     <>
       <div className="flex flex-col gap-10">
@@ -28,7 +86,7 @@ const HomePage = () => {
               />
             </div>
             <PosterSlider
-              images={TempPosters}
+              images={popularMovies}
               title="Premieres"
               subtitle="Brand new relases every friday"
               isDark
@@ -39,17 +97,17 @@ const HomePage = () => {
 
       <div className="container mx-auto px-4 my-8 xl:px-14">
         <PosterSlider
-          images={TempPosters}
+          images={TopRatedMovies}
           title="Online Streaming events"
           isDark={false}
         />
       </div>
       <div className="container mx-auto px-4 my-8 xl:px-14">
         <PosterSlider
-          images={TempPosters}
+          images={upcomingMovies}
           title="Outdoor events"
           isDark={false}
-        /> 
+        />
       </div>
     </>
   );

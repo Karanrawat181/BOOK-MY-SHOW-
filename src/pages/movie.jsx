@@ -1,16 +1,77 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext, useState, useEffect } from 'react'
+
+import { useParams } from 'react-router-dom'
+
+import Slider from 'react-slick';
+
 
 import { FaCcVisa, FaCcApplePay } from 'react-icons/fa';
+
+//component
 import Cast from '../components/Cast/Cast.component';
 import MovieHero from '../components/MovieHero/MovieHero.component';
 import PosterSlider from '../components/PosterSlider/PosterSlider.component';
-import TempPosters from '../config/TempPosters.config';
 
+
+//context
+import { MovieContext } from '../context/Movie.context';
 
 
 
 const Movie = () => {
 
+    const { id } = useParams();
+    const { movie } = useContext(MovieContext);
+    const [cast, setCast] = useState([]);
+    const [similerMovies,setSimilerMovies] = useState([]);
+    const [recommended,setRecommended] = useState([]);
+
+
+    useEffect(() => {
+
+        const requestCast = async () => {
+
+            const getCast = await axios.get(`/movie/${id}/credits`);
+
+            setCast(getCast.data.cast);
+
+        };
+
+
+        requestCast();
+    }, [id]);
+
+    useEffect(() => {
+
+        const requestSimilerMovies = async () => {
+    
+          const getSimilerMovies= await axios.get(`/movie/${id}/similar`);
+    
+          setSimilerMovies(getSimilerMovies.data.results);
+    
+    
+        };
+    
+        requestSimilerMovies();
+    
+      }, [id]);
+
+
+      useEffect(() => {
+
+        const requestRecommended = async () => {
+    
+          const getRecommended = await axios.get(`/movie/${id}/recommendations`);
+    
+          setRecommended(getRecommended.data.results);
+    
+    
+        };
+    
+        requestRecommended();
+    
+      }, [id]);
 
     const settings = {
 
@@ -20,33 +81,64 @@ const Movie = () => {
         slidesToScroll: 4,
         initialSlide: 0,
         responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                },
             },
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2,
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
             },
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                },
             },
-          },
         ],
-      };
+    };
+    const settingsCast = {
 
-
+        infinite: false,
+        speed: 500,
+        slidesToShow: 6,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 3,
+                    infinite: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
 
     return (
         <>
@@ -59,9 +151,7 @@ const Movie = () => {
 
                     <h2 className="text-gray-800 font-bold text-2xl">About The Movie</h2>
 
-                    <p >Bruce Wayne and Diana Prince try to bring the metahumans of Earth
-                        together after the death of Clark Kent. Meanwhile, Darkseid sends
-                        Steppenwolf to Earth with an army to subjugate humans.</p>
+                    <p >{movie.overview}</p>
 
                 </div>
 
@@ -123,28 +213,23 @@ const Movie = () => {
                 </div>
                 <div className="my-8">
                     <h2 className="text-gray-800 font-bold text-2xl mb-4">Cast & Crew</h2>
-                    <div className="flex flex-wrap gap-4">
-
-
-                        <Cast
-                            image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ben-affleck-292-12-09-2017-05-12-16.jpg"
-                            castName="Ben Affleck"
-                            role="Batman"
-                        />
-                        <Cast
-                            image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/henry-cavill-23964-04-05-2020-04-25-14.jpg"
-                            castName="Henry Cavil"
-                            role="Superman"
-                        />
-                        <Cast
-                            image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/gal-gadot-11088-17-10-2017-11-45-36.jpg"
-                            castName="Gal Gadot"
-                            role="Wonder Woman"
-                        />
 
 
 
-                    </div>
+                    <Slider {...settingsCast}>
+                        {cast.map((castdata) => (
+
+                            <Cast
+                                image={`https://image.tmdb.org/t/p/original${castdata.profile_path}`}
+                                castName={castdata.original_name}
+                                role={castdata.character}
+                            />
+
+                        ))}
+
+                    </Slider>
+
+
 
                 </div>
 
@@ -157,24 +242,24 @@ const Movie = () => {
                 <div className="my-8">
 
                     <PosterSlider
-                    config={settings}
-                        images={TempPosters}
-                        title="You Might Also Working"
+                        config={settings}
+                        images={similerMovies}
+                        title="Similer Movies"
                         isDark={false}
                     />
 
                 </div>
-                
+
                 <div className="my-8">
                     <hr />
                 </div>
-                
+
                 <div className="my-8">
 
                     <PosterSlider
-                    config={settings}
-                        images={TempPosters}
-                        title="BMS Exclusive"
+                        config={settings}
+                        images={recommended}
+                        title="Recommended Movies"
                         isDark={false}
                     />
 

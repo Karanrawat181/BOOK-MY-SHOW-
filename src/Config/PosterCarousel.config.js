@@ -13,6 +13,7 @@ const settings = {
         infinite: true,
       },
     },
+    
     {
       breakpoint: 600,
       settings: {

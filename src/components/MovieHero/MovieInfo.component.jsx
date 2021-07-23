@@ -1,6 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react'
+
+
+//context
+import { MovieContext } from '../../context/Movie.context';
+
 
 const MovieInfo = () => {
+
+  const{movie} = useContext(MovieContext);
+
+  //optional chaining
+  const genres = movie.genres?.map(({ name} ) => name).join(","); 
+  
+
   return (
     <>
 
@@ -21,15 +33,15 @@ const MovieInfo = () => {
 
         </div>
 
-        <h1 className="text-white font-bold lg:text-5xl hidden lg:block"> Justice League</h1>
+        <h1 className="text-white font-bold lg:text-5xl hidden lg:block"> {movie.original_title}</h1>
 
         <div className="flex flex-col-reverse gap-3 lg:gap-5 lg:flex-col ">
 
 
           <div className="text-white font-light flex flex-col gap-2 md:px-4">
 
-            <h4>4k &bull; English &bull; Action</h4>
-            <h4>1h 53m &bull;Action, Sci-Fi , thriller &bull; 13++</h4>
+            <h4>{movie.original_language} &bull; {genres}</h4>
+            <h4>{(movie.runtime/60).toFixed(2)}h &bull;  13++</h4>
 
           </div>
 

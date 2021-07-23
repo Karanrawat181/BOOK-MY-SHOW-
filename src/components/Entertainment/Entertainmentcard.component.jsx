@@ -7,8 +7,8 @@ const EntertainmentCard = (props) => {
 
       <div className="w-full h-30 px-3">
         <img
-          className="w-full h-full rounded-xl"
           src={props.src}
+          className="w-full h-full rounded-xl"
           alt="entertainment image"
         />
 
@@ -18,6 +18,7 @@ const EntertainmentCard = (props) => {
 };
 
 const EntertainmentCardSlider = () => {
+
   const EntertainmentImage = [
     "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MjQwKyBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/workshops-collection-202007231330.png",
     "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTUrIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/fitness-collection-2020081150.png",
