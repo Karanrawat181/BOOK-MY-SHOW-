@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/BOOK-MY-SHOW-/static/css/main.6040d0c7.chunk.css",
+    "main.js": "/BOOK-MY-SHOW-/static/js/main.2ee622cb.chunk.js",
+    "main.js.map": "/BOOK-MY-SHOW-/static/js/main.2ee622cb.chunk.js.map",
+    "runtime-main.js": "/BOOK-MY-SHOW-/static/js/runtime-main.2d54db82.js",
+    "runtime-main.js.map": "/BOOK-MY-SHOW-/static/js/runtime-main.2d54db82.js.map",
+    "static/css/2.6e77f508.chunk.css": "/BOOK-MY-SHOW-/static/css/2.6e77f508.chunk.css",
+    "static/js/2.88c5a0ab.chunk.js": "/BOOK-MY-SHOW-/static/js/2.88c5a0ab.chunk.js",
+    "static/js/2.88c5a0ab.chunk.js.map": "/BOOK-MY-SHOW-/static/js/2.88c5a0ab.chunk.js.map",
+    "index.html": "/BOOK-MY-SHOW-/index.html",
+    "static/css/2.6e77f508.chunk.css.map": "/BOOK-MY-SHOW-/static/css/2.6e77f508.chunk.css.map",
+    "static/css/main.6040d0c7.chunk.css.map": "/BOOK-MY-SHOW-/static/css/main.6040d0c7.chunk.css.map",
+    "static/js/2.88c5a0ab.chunk.js.LICENSE.txt": "/BOOK-MY-SHOW-/static/js/2.88c5a0ab.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/BOOK-MY-SHOW-/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2d54db82.js",
+    "static/css/2.6e77f508.chunk.css",
+    "static/js/2.88c5a0ab.chunk.js",
+    "static/css/main.6040d0c7.chunk.css",
+    "static/js/main.2ee622cb.chunk.js"
+  ]
+}
